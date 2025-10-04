@@ -37,14 +37,16 @@
     }
 
     .name {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      margin: 0;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; /* Chrome/Safari */
+  -moz-background-clip: text;    /* Firefox */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Chrome/Safari */
+  -moz-text-fill-color: transparent;    /* Firefox */
     }
 
     .tagline {
@@ -275,8 +277,8 @@
       <section id="links" aria-labelledby="links-title">
         <h2 id="links-title">Links</h2>
         <p class="links">
-          <a href="https://github.com/Nebel01" target="_blank" rel="noopener">GitHub</a><br />
-          <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a>
+          GitHub: <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a><br />
+          LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">linkedin.com/in/your-handle</a>
         </p>
       </section>
     </main>
