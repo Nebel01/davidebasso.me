@@ -36,18 +36,18 @@
       text-align: center;
     }
 
-    .name {
+.name {
   font-size: clamp(28px, 5vw, 48px);
   font-weight: 800;
   letter-spacing: 0.5px;
   margin: 0;
+
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text; /* Chrome/Safari */
-  -moz-background-clip: text;    /* Firefox */
-  background-clip: text;
-  -webkit-text-fill-color: transparent; /* Chrome/Safari */
-  -moz-text-fill-color: transparent;    /* Firefox */
-    }
+  background-clip: text;            /* Firefox + modern browsers */
+  -webkit-background-clip: text;    /* Chrome/Safari */
+  color: transparent;               /* lets the background show through the glyphs */
+}
+
 
     .tagline {
       margin: 8px 0 0;
@@ -294,3 +294,4 @@
   </script>
 </body>
 </html>
+
