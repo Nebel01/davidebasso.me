@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Davide Basso — Portfolio</title>
+  <meta name="description" content="Davide Basso's portfolio — System Administrator and more." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --accent-2: #34d399;
+      --border: #1f2937;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(180deg, #0b1220 0%, #0f172a 60%, #0b1220 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      padding: 40px 0 16px;
+      text-align: center;
+    }
+
+    .name {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    nav {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      text-decoration: none;
+      background-color: rgba(17, 24, 39, 0.7);
+      transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background-color: rgba(17, 24, 39, 0.9);
+    }
+
+    main {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    section {
+      background-color: rgba(17, 24, 39, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    section h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    ul.inline {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    ul.inline li {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      background-color: rgba(15, 23, 42, 0.7);
+    }
+
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 120ms ease;
+    }
+
+    .links a:hover {
+      border-color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 30px 0;
+    }
+
+    /* Accessibility: focus outlines */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header role="banner">
+      <h1 class="name">DD</h1>
+      <p class="tagline">System Administrator • Programmer • Problem Solver</p>
+
+      <nav aria-label="Quick navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <main id="content">
+      <!-- Description: How you're great as a System Administrator and at Programming -->
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>
+          I thrive where reliability meets automation. As a system administrator, I design resilient, observable
+          environments—hardening configurations, automating routine work, and building guardrails that prevent surprises.
+          I’m at home with Linux, networking, identity, and cloud infrastructure, and I bring a bias toward clean
+          documentation and measurable outcomes.
+        </p>
+        <p>
+          As a programmer, I translate operational wisdom into code. I build tooling, pipelines, and services that make
+          systems predictable and teams faster. My work emphasizes readability, tests, and small, composable components.
+          When I ship, I ship with dashboards, alerts, and a rollback plan.
+        </p>
+        <div class="grid">
+          <div class="card" aria-label="Core competencies">
+            <h3>Core competencies</h3>
+            <ul class="inline">
+              <li>Linux & shell</li>
+              <li>Networking & DNS</li>
+              <li>Cloud (AWS/Azure/GCP)</li>
+              <li>IaC (Terraform)</li>
+              <li>Containers (Docker/K8s)</li>
+              <li>CI/CD</li>
+              <li>Observability</li>
+              <li>Python</li>
+              <li>Go/Node</li>
+              <li>Security hardening</li>
+            </ul>
+          </div>
+          <div class="card" aria-label="Ways I work">
+            <h3>Ways I work</h3>
+            <p class="meta">Reliable systems, clear ownership, fast feedback</p>
+            <ul>
+              <li>Automate first, document second, manual last.</li>
+              <li>Prefer immutable builds and declarative configs.</li>
+              <li>Design for failure; rehearse recovery.</li>
+              <li>Make observability a feature, not an afterthought.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects: Breakdown -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <div class="grid" role="list">
+          <article class="card" role="listitem">
+            <h3>Infra as Code baseline</h3>
+            <p class="meta">Terraform • AWS • GitHub Actions</p>
+            <p>
+              A modular Terraform baseline with environment promotions, drift detection, and automated policy checks.
+              Reduced provisioning time and improved consistency across stacks.
+            </p>
+            <ul class="inline">
+              <li>Reusable modules</li>
+              <li>OPA policies</li>
+              <li>Plan/apply gates</li>
+            </ul>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3>Kubernetes platform toolkit</h3>
+            <p class="meta">K8s • Helm • Prometheus/Grafana</p>
+            <p>
+              Opinionated Helm charts and operators for app onboarding, secrets, autoscaling, and golden dashboards with
+              SLOs baked in.
+            </p>
+            <ul class="inline">
+              <li>Service templates</li>
+              <li>SLO burn rates</li>
+              <li>Canary deploys</li>
+            </ul>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3>Release pipeline & rollback</h3>
+            <p class="meta">CI/CD • Feature flags • Blue/green</p>
+            <p>
+              A deployment workflow with automatic health checks, feature flag toggles, and one-click rollbacks, cutting
+              mean time to recovery.
+            </p>
+            <ul class="inline">
+              <li>Health gates</li>
+              <li>Automated rollbacks</li>
+              <li>Audit trails</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Links: GitHub and LinkedIn -->
+      <section id="links" aria-labelledby="links-title">
+        <h2 id="links-title">Links</h2>
+        <p class="links">
+          GitHub: <a href="https://github.com/your-username" target="_blank" rel="noopener">github.com/your-username</a><br />
+          LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">linkedin.com/in/your-handle</a>
+        </p>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      © <span id="year"></span> DD — Built with care and a bit of automation.
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
