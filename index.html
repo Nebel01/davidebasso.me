@@ -12,7 +12,6 @@
        ========================= */
 
     :root {
-      --bg: #f8fafc;
       --bg-gradient: linear-gradient(180deg, #f8fafc 0%, #eef2ff 60%, #f8fafc 100%);
       --card: #ffffff;
       --text: #0f172a;
@@ -24,7 +23,6 @@
     }
 
     [data-theme="dark"] {
-      --bg: #0f172a;
       --bg-gradient: linear-gradient(180deg, #0b1220 0%, #0f172a 60%, #0b1220 100%);
       --card: #111827;
       --text: #e5e7eb;
@@ -47,7 +45,7 @@
       background: var(--bg-gradient);
       color: var(--text);
       line-height: 1.6;
-      transition: background 200ms ease, color 200ms ease;
+      transition: background 300ms ease, color 300ms ease;
     }
 
     .container {
@@ -81,25 +79,43 @@
       color: var(--muted);
     }
 
-    /* Theme toggle */
+    /* =========================
+       THEME TOGGLE
+       ========================= */
+
     .theme-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
-      padding: 8px 12px;
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
       cursor: pointer;
-      font-size: 14px;
-      transition: all 120ms ease;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      transition: border-color 120ms ease;
     }
 
     .theme-toggle:hover {
       border-color: var(--accent);
-      transform: translateY(-1px);
     }
+
+    .theme-icon {
+      display: inline-block;
+      transition: transform 400ms ease;
+    }
+
+    .theme-icon.rotate {
+      transform: rotate(360deg);
+    }
+
+    /* =========================
+       NAV
+       ========================= */
 
     nav {
       margin-top: 24px;
@@ -142,8 +158,6 @@
       box-shadow: 0 10px 25px var(--shadow);
     }
 
-    h2 { margin-top: 0; }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -162,24 +176,6 @@
     .meta {
       color: var(--muted);
       font-size: 13px;
-    }
-
-    ul.inline {
-      list-style: none;
-      padding: 0;
-      margin: 8px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    ul.inline li {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid var(--border);
-      background-color: var(--bg);
-      color: var(--muted);
     }
 
     .links a {
@@ -204,7 +200,9 @@
 <body>
   <div class="container">
     <header>
-      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+      </button>
 
       <h1 class="name">Davide Basso</h1>
       <p class="tagline">System Administrator • Programmer • Problem Solver</p>
@@ -220,7 +218,7 @@
       <section id="about">
         <h2>About</h2>
         <p>
-          I design reliable systems, automate repeatable work, and translate operational experience into maintainable code.
+          I design reliable systems, automate repeatable work, and turn operational experience into maintainable code.
         </p>
       </section>
 
@@ -253,21 +251,32 @@
   </div>
 
   <script>
-    const toggle = document.getElementById('themeToggle');
     const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
 
-    function setTheme(theme) {
+    function applyTheme(theme) {
       root.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      toggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+      icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
 
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
+    // Auto-detect system theme (only if user hasn't chosen)
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      applyTheme(storedTheme);
+    } else {
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(systemDark ? 'dark' : 'light');
+    }
 
     toggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', current);
+
+      icon.classList.add('rotate');
+      setTimeout(() => icon.classList.remove('rotate'), 400);
+
+      applyTheme(current);
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
